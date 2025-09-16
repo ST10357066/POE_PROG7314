@@ -1,0 +1,9 @@
+# Node dependencies
+node_modules/
+
+# Local environment variables
+.env
+
+# Service account key (if you download it locally)
+service-account.json
+.vercel
