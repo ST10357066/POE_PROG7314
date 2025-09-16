@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <!--
+    Default configuration for all connections.
+    By default, we only allow secure HTTPS traffic.
+    -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!--
+    Configuration for local development.
+    We are explicitly allowing insecure HTTP traffic ONLY to our local server.
+    -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
+
+    <!--
+    Configuration for our production Vercel API.
+    This explicitly trusts our Vercel domain.
+    -->
+    <domain-config>
+        <domain includeSubdomains="true">tmr-api.vercel.app</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+
+</network-security-config>

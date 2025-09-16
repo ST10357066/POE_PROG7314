@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTaskMaster</string>
+    <string name="sign_in_headline">Ngena ukuze uqhubeke</string>
+    <string name="create_account_headline">Dala i-akhawunti</string>
+    <string name="sign_in">Ngena</string>
+    <string name="sign_up">Bhalisa</string>
+    <string name="toggle_to_sign_up">Awunayo i-akhawunti? Bhalisa</string>
+    <string name="toggle_to_sign_in">Usuvele unayo i-akhawunti? Ngena</string>
+    <string name="tasks_tab">Imisebenzi</string>
+    <string name="profile_tab">Iphrofayili</string>
+    <string name="no_tasks_message">Azikho izisebenzi okwamanje. Faka eyodwa!</string>
+    <string name="add_new_task">Faka Umsebenti Omusha</string>
+    <string name="title">Isihloko</string>
+    <string name="description">Incazelo (Ngokuzithandela)</string>
+    <string name="due_date_reminders">Izikhumbuzi Zosuku Lwamanqamu</string>
+    <string name="reminders_description">Thola izaziso...</string>
+    <string name="sign_out">Phuma</string>
+    <string name="add">Faka</string>
+    <string name="save">Gcina</string>
+    <string name="cancel">Khansela</string>
+    <string name="language">Ulimi</string>
+    <string name="loading">Iyalayisha...</string>
+    <string name="account_section">I-akhawunti</string>
+    <string name="settings">Izilungiselelo</string>
+    <string name="change">Shintsha</string>
+    <string name="select_language">Khetha Ulimi</string>
+    <string name="task_details_title">Imininingwane Yomsebenzi</string>
+    <string name="back_button_desc">Emuva</string>
+    <string name="edit_task_desc">Hlela Umsebenzi</string>
+    <string name="error_dialog_title">Iphutha</string>
+    <string name="ok">KULUNGILE</string>
+    <string name="edit_task_dialog_title">Hlela Umsebenzi</string>
+    <string name="no_due_date">Alukho usuku lokukhokha</string>
+    <string name="due_date_prefix">Kufanele</string>
+    <string name="select_due_date_desc">Khetha Usuku Lwamanqamu</string>
+    <string name="add_task_desc">Faka Umsebenzi</string>
+    <string name="delete_task_desc">Susa</string>
+</resources>
