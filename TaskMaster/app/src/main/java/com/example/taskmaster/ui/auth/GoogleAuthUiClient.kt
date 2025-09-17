@@ -29,7 +29,7 @@ class GoogleAuthUiClient(
 ) {
     // Get your Web Client ID from the google-services.json file
     // Or from the Google Cloud Console for your project.
-    private val webClientId = "YOUR_WEB_CLIENT_ID"
+    private val webClientId = "26130162104-sht9i6etsmecs9ocrgjqfg0qeff3bp70.apps.googleusercontent.com"
 
     suspend fun signIn(): IntentSender? {
         val result = try {

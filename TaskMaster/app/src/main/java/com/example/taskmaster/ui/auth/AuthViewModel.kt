@@ -124,25 +124,38 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
     fun firebaseSignInWithGoogle(intent: Intent) {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
-            val signInResult = googleAuthUiClient.signInWithIntent(intent)
 
-            if (signInResult.data != null) {
-                // CORRECTED: Use the idToken from the result to get the credential
-                val credential = GoogleAuthProvider.getCredential(signInResult.data.idToken, null)
-                auth.signInWithCredential(credential)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            _uiState.update {
-                                it.copy(isLoading = false, authenticationSuccess = true)
-                            }
-                        } else {
-                            _uiState.update {
-                                it.copy(isLoading = false, errorMessage = task.exception?.message ?: "Firebase Auth failed.")
+            try {
+                // This is the call that was likely failing
+                val signInResult = googleAuthUiClient.signInWithIntent(intent)
+
+                if (signInResult.data != null) {
+                    // We got the ID token from Google, now give it to Firebase
+                    val credential = GoogleAuthProvider.getCredential(signInResult.data.idToken, null)
+                    auth.signInWithCredential(credential)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                _uiState.update {
+                                    it.copy(isLoading = false, authenticationSuccess = true)
+                                }
+                            } else {
+                                _uiState.update {
+                                    it.copy(isLoading = false, errorMessage = task.exception?.message ?: "Firebase sign-in failed.")
+                                }
                             }
                         }
+                } else {
+                    // The Google Sign-In itself failed
+                    _uiState.update {
+                        it.copy(isLoading = false, errorMessage = signInResult.errorMessage ?: "Google Sign-In failed.")
                     }
-            } else {
-                _uiState.update { it.copy(isLoading = false, errorMessage = signInResult.errorMessage ?: "Google Sign-In failed.") }
+                }
+            } catch (e: Exception) {
+                // Catch any other unexpected exceptions from the signInWithIntent call
+                _uiState.update {
+                    it.copy(isLoading = false, errorMessage = e.message ?: "An unknown error occurred during Google Sign-In.")
+                }
+                e.printStackTrace()
             }
         }
     }
